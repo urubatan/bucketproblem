@@ -2,9 +2,11 @@
 
 This project is a simple REST API for an algorithm to solve "the bucket problem", the API will take 3 parameters, the size of bucket 1 and 2, it will assume an infinite amount of water and will get the desired amount in one of the provided buckets by executing one of 3 operations: fill bucket, empty bucket and transfer from one bucket to another
 
+The api will use memory for caching, this way requests with the same parameters will use the cached values instead of using CPU to calculate the answer again.
+
 ## Project setup
 
-There are two options to run this project, you can execute on your own machine using a Ruby environment with the steps in this section, or you can run a docker container, the command will be in the end of the section
+There are two options to run this project, you can execute on your own machine using a Ruby environment with the steps in the section "Local Ruby Setup", or you can run as a docker container following the section "Docker Setup"
 
 ### Local Ruby Setup
 
