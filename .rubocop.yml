@@ -1,5 +1,5 @@
-require:
-  - 'rubocop-rails'
+inherit_gem:
+  rubocop-rails-omakase: rubocop.yml
 
 Style/Documentation:
   Enabled: false

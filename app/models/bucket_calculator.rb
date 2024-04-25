@@ -8,13 +8,13 @@ class BucketCalculator
              p.is_a? Integer
            end && params.all?(&:positive?)
       raise BucketCalculatorException,
-            'Invalid parameters received, valid parameters are: x_capacity, y_capacity and z_amount_wanted, and they must be positive integers'
+            "Invalid parameters received, valid parameters are: x_capacity, y_capacity and z_amount_wanted, and they must be positive integers"
     end
 
     @x_capacity = x_capacity
     @y_capacity = y_capacity
     @z_amount_wanted = z_amount_wanted
-    raise BucketCalculatorException, 'Impossible to calculate with the provided params' unless check_params
+    raise BucketCalculatorException, "Impossible to calculate with the provided params" unless check_params
   end
 
   def check_params
@@ -28,7 +28,7 @@ class BucketCalculator
   end
 
   def init_buckets
-    [Bucket.new('bucketx', @x_capacity, 0), Bucket.new('buckety', @y_capacity, 0)]
+    [ Bucket.new("bucketx", @x_capacity, 0), Bucket.new("buckety", @y_capacity, 0) ]
   end
 
   def calculate_steps
@@ -37,22 +37,22 @@ class BucketCalculator
                    steps1 = roll_down(bucket2, bucket1)
                    bucket1, bucket2 = init_buckets
                    steps2 = roll_up(bucket2, bucket1)
-                   [steps1, steps2]
-                 elsif @z_amount_wanted < @x_capacity && @z_amount_wanted > @y_capacity
+                   [ steps1, steps2 ]
+    elsif @z_amount_wanted < @x_capacity && @z_amount_wanted > @y_capacity
                    bucket1, bucket2 = init_buckets
                    steps1 = roll_down(bucket1, bucket2)
                    bucket1, bucket2 = init_buckets
                    steps2 = roll_up(bucket1, bucket2)
-                   [steps1, steps2]
-                 elsif @z_amount_wanted == @x_capacity
+                   [ steps1, steps2 ]
+    elsif @z_amount_wanted == @x_capacity
                    bucket1 = init_buckets.first
-                   [[fill_bucket(bucket1)]]
-                 elsif @z_amount_wanted == @y_capacity
+                   [ [ fill_bucket(bucket1) ] ]
+    elsif @z_amount_wanted == @y_capacity
                    bucket2 = init_buckets.last
-                   [[fill_bucket(bucket2)]]
-                 end
+                   [ [ fill_bucket(bucket2) ] ]
+    end
     steps = steps_list.reject(&:empty?).min_by(&:size)
-    raise BucketCalculatorException, 'Impossible to calculate with the provided params' unless steps&.any?
+    raise BucketCalculatorException, "Impossible to calculate with the provided params" unless steps&.any?
 
     steps
   end
