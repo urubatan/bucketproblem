@@ -1,6 +1,6 @@
 # README
 
-This project is a simple REST API for an algorithm to solve "the bucket problem", the API will take 3 parameters, the size of bucket 1 and 2, it will assume an infinite amount of water and will get the desired amount in one of the provided buckets by executing one of 3 operations: fill bucket, empty bucket and transfer from one bucket to another
+This project is a simple REST API for an algorithm to solve "the bucket problem", the API will take 3 parameters, the size of bucket 1 and 2 and the desired amount, it will assume an infinite amount of water and will get the desired amount in one of the provided buckets by executing one of 3 operations: fill bucket, empty bucket and transfer from one bucket to another
 
 The api will use memory for caching, this way requests with the same parameters will use the cached values instead of using CPU to calculate the answer again.
 
